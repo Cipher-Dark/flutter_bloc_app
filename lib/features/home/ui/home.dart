@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_app/features/cart/ui/wishlist.dart';
+import 'package:flutter_bloc_app/features/cart/ui/cart.dart';
+import 'package:flutter_bloc_app/features/wishlist/ui/wishlist.dart';
 import 'package:flutter_bloc_app/features/home/bloc/home_bloc.dart';
 import 'package:flutter_bloc_app/features/home/ui/product_tile_widget.dart';
 
@@ -28,16 +29,16 @@ class _HomeState extends State<Home> {
       listener: (context, state) {
         if (state is HomeNavigateToCartPageActionState) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const Card()));
+              context, MaterialPageRoute(builder: (context) => const Cart()));
         } else if (state is HomeNavigateToWishlistPageActionState) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const Wishlist()));
         } else if (state is HomeProductItemWishlistedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Item added to wishlist")));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Item added to wishlist")));
         } else if (state is HomeProductItemCartedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Item added to Cart ")));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Item added to Cart ")));
         }
       },
       builder: (context, state) {
