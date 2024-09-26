@@ -30,7 +30,6 @@ class _CartState extends State<Cart> {
         listenWhen: (previous, current) => current is CartActionState,
         buildWhen: (previous, current) => current is! CartActionState,
         builder: (context, state) {
-          print(" this is the state:  ${state.runtimeType}");
           switch (state.runtimeType) {
             case const (CartSuccessState):
               final successState = state as CartSuccessState;
